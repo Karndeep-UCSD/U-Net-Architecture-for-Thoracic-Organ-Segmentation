@@ -80,7 +80,7 @@ def get_mask_combined(contours, slices):
 # read in CT volume
 slice_directory = "C:/Users/19095/Documents/ECE228/NBIA_CT_Data/LCTSC/LCTSC-Test-S1-101/03-03-2004-08186/79262/*"
 dcms = glob.glob(slice_directory)
-slices = [pydicom.dcmread(dcm) for dcm in dcms]
+slices = [pydicom.dcmread(dcm) for dcm in dcms]  
 CTvolume = np.stack([s.pixel_array for s in slices], axis = -1)
 # visualize
 sample_stack(CTvolume, title = 'CT images')
@@ -109,7 +109,7 @@ sample_stack(labels[4], title = contours[4]['organ'])
 # need to iterate though all volumes
 # Store Masks somewhere
 
-
+#https://machinelearningmastery.com/how-to-save-a-numpy-array-to-file-for-machine-learning/
 
 
 
