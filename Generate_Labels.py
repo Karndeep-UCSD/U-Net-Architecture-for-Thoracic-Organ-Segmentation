@@ -3,20 +3,21 @@ import pydicom
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage.draw import polygon
+import os
 
-# https://www.raddq.com/dicom-processing-segmentation-visualization-in-python/
+
 def sample_stack(stack, rows=6, cols=6, start_with=10, show_every=3, title = ''):
     fig,ax = plt.subplots(rows,cols,figsize=[12,12])
     if title != '':
         fig.suptitle(title)
-    for i in range(rows*cols):
+    image_num = min(rows*cols, int(np.floor((stack.shape[2] - start_with) / show_every)))
+    for i in range(image_num):
         ind = start_with + i*show_every
         ax[int(i/rows),int(i % rows)].set_title('slice %d' % ind)
         ax[int(i/rows),int(i % rows)].imshow(stack[:,:,ind],cmap='gray')
         ax[int(i/rows),int(i % rows)].axis('off')
     plt.show()
 
-# SOURCE: http://aapmchallenges.cloudapp.net/forums/3/2/
 def read_structure(structure):
     contours = []
     for i in range(len(structure.ROIContourSequence)):
@@ -28,12 +29,12 @@ def read_structure(structure):
         contours.append(contour)
     return contours
 
-def get_mask(contours, slices):
-    z = [round(s.ImagePositionPatient[2],1) for s in slices]
-    pos_r = slices[0].ImagePositionPatient[1]
-    spacing_r = slices[0].PixelSpacing[1]
-    pos_c = slices[0].ImagePositionPatient[0]
-    spacing_c = slices[0].PixelSpacing[0]
+def get_mask(contours, data):
+    z = [round(s.ImagePositionPatient[2],1) for s in data]
+    pos_r = data[0].ImagePositionPatient[1]
+    spacing_r = data[0].PixelSpacing[1]
+    pos_c = data[0].ImagePositionPatient[0]
+    spacing_c = data[0].PixelSpacing[0]
 
     labels = [np.zeros_like(CTvolume, dtype=np.uint8) for a in range(len(contours))]
     i=0
@@ -53,12 +54,12 @@ def get_mask(contours, slices):
     
     return labels, colors
 
-def get_mask_combined(contours, slices):
-    z = [round(s.ImagePositionPatient[2],1) for s in slices]
-    pos_r = slices[0].ImagePositionPatient[1]
-    spacing_r = slices[0].PixelSpacing[1]
-    pos_c = slices[0].ImagePositionPatient[0]
-    spacing_c = slices[0].PixelSpacing[0]
+def get_mask_combined(contours, data):
+    z = [round(s.ImagePositionPatient[2],1) for s in data]
+    pos_r = data[0].ImagePositionPatient[1]
+    spacing_r = data[0].PixelSpacing[1]
+    pos_c = data[0].ImagePositionPatient[0]
+    spacing_c = data[0].PixelSpacing[0]
 
     label = np.zeros_like(CTvolume, dtype=np.uint8)
     for con in contours:
@@ -76,40 +77,82 @@ def get_mask_combined(contours, slices):
     
     return label, colors
 
+plot_figs = True
 
-# read in CT volume
-slice_directory = "C:/Users/19095/Documents/ECE228/NBIA_CT_Data/LCTSC/LCTSC-Test-S1-101/03-03-2004-08186/79262/*"
-dcms = glob.glob(slice_directory)
-slices = [pydicom.dcmread(dcm) for dcm in dcms]  
-CTvolume = np.stack([s.pixel_array for s in slices], axis = -1)
-# visualize
-sample_stack(CTvolume, title = 'CT images')
+# dealing with data's folder structure
+d = 'C:/Users/19095/Documents/ECE228/NBIA_CT_Data/LCTSC/'
+fs = os.listdir(d)
 
-# read in segmentation file
-seg_dir = "C:/Users/19095/Documents/ECE228/NBIA_CT_Data/LCTSC/LCTSC-Test-S1-101/03-03-2004-08186/1.000000-56597/1-1.dcm"
-seg_file = pydicom.dcmread(seg_dir)
-contours = read_structure(seg_file)
+for i,f in enumerate(fs):
+    t = os.listdir(os.path.join(d,f))
+    fs[i] = os.path.join(d, f,t[0])
 
-# generate masks
-labels, colors = get_mask(contours, slices)             # individual organ labels
-label, colors = get_mask_combined(contours, slices)     # combined label
+# get sementation files and data folders
+dirs = [] # list of lists: [segmentation directory, data directory]
+for f in fs:
+    ls = os.listdir(f)        
+    # only consider folders
+    r = [] # remove files that will be ignored
+    for l in ls:
+        if not os.path.isdir(os.path.join(f,l)):
+            r.append(l)
+    for val in r:
+        ls.remove(val)
+    # store good directories
+    if len(ls) == 2:
+        if len(os.listdir(os.path.join(f,ls[0]))) == 1:
+            dirs.append([os.path.join(f,ls[0]),os.path.join(f,ls[1])])
+        else:
+            dirs.append([os.path.join(f,ls[1]),os.path.join(f,ls[0])])
+    else:
+        raise ValueError("folder structure unexpected")
+        
 
-# visualize labels
-sample_stack(label, title = 'Combined')
-sample_stack(labels[0], title = contours[0]['organ'])
-sample_stack(labels[1], title = contours[1]['organ'])
-sample_stack(labels[2], title = contours[2]['organ'])
-sample_stack(labels[3], title = contours[3]['organ'])
-sample_stack(labels[4], title = contours[4]['organ'])
+for i,D in enumerate(dirs):
+    seg_dir = os.path.join(D[0],os.listdir(D[0])[0])
+    print('loading data....\n', fs[i])
+    data_dir = D[1] + '/*'
+
+    # read in CT volume
+    dcms = glob.glob(data_dir)
+    data = [pydicom.dcmread(dcm) for dcm in dcms]  
+    CTvolume = np.stack([d.pixel_array for d in data], axis = -1)
+    # visualize
+    if plot_figs:
+        sample_stack(CTvolume, title = 'CT images')
+    
+    # read in segmentation file
+    seg_file = pydicom.dcmread(seg_dir)
+    contours = read_structure(seg_file)
+    
+    # generate masks
+    labels, colors = get_mask(contours, data)             # individual organ labels
+    join_labels, colors = get_mask_combined(contours, data)     # combined label
+    
+    # visualize labels
+    if plot_figs:
+        sample_stack(join_labels, title = 'Combined Segmentation')
+        # sample_stack(labels[0], title = contours[0]['organ'])
+        # sample_stack(labels[1], title = contours[1]['organ'])
+        # sample_stack(labels[2], title = contours[2]['organ'])
+        # sample_stack(labels[3], title = contours[3]['organ'])
+        # sample_stack(labels[4], title = contours[4]['organ'])
+    
+    for j in range(len(labels)):
+        fname = fs[i] + '/' + contours[j]['organ'] + '.npy'
+        np.save(fname,labels[j])
+
+
+        
+        
+
+
+# references
+# https://www.raddq.com/dicom-processing-segmentation-visualization-in-python/
+# SOURCE: http://aapmchallenges.cloudapp.net/forums/3/2/
 
 
 
-
-
-# need to iterate though all volumes
-# Store Masks somewhere
-
-#https://machinelearningmastery.com/how-to-save-a-numpy-array-to-file-for-machine-learning/
 
 
 
