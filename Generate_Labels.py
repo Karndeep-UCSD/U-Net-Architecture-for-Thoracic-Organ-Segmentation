@@ -23,7 +23,7 @@ def read_structure(structure):
     for i in range(len(structure.ROIContourSequence)):
         contour = {}
         contour['color'] = structure.ROIContourSequence[i].ROIDisplayColor
-        contour['number'] = structure.ROIContourSequence[i].ReferencedROINumber 
+        contour['number'] = structure.ROIContourSequence[i].ReferencedROINumber
         contour['contours'] = [s.ContourData for s in structure.ROIContourSequence[i].ContourSequence]
         contour['organ'] = structure.StructureSetROISequence[i].ROIName
         contours.append(contour)
@@ -43,15 +43,15 @@ def get_mask(contours, data):
         for c in con['contours']:
             nodes = np.array(c).reshape((-1, 3))
             assert np.amax(np.abs(np.diff(nodes[:, 2]))) == 0
-            z_index = z.index(np.around(nodes[0, 2], 1))   
+            z_index = z.index(np.around(nodes[0, 2], 1))
             r = (nodes[:, 1] - pos_r) / spacing_r
-            c = (nodes[:, 0] - pos_c) / spacing_c 
+            c = (nodes[:, 0] - pos_c) / spacing_c
             rr, cc = polygon(r, c)
             labels[i][rr, cc, z_index] = num
 
         i += 1
         colors = tuple(np.array([con['color'] for con in contours]) / 255.0)
-    
+
     return labels, colors
 
 def get_mask_combined(contours, data):
@@ -67,20 +67,20 @@ def get_mask_combined(contours, data):
         for c in con['contours']:
             nodes = np.array(c).reshape((-1, 3))
             assert np.amax(np.abs(np.diff(nodes[:, 2]))) == 0
-            z_index = z.index(np.around(nodes[0, 2], 1))   
+            z_index = z.index(np.around(nodes[0, 2], 1))
             r = (nodes[:, 1] - pos_r) / spacing_r
-            c = (nodes[:, 0] - pos_c) / spacing_c 
+            c = (nodes[:, 0] - pos_c) / spacing_c
             rr, cc = polygon(r, c)
             label[rr, cc, z_index] = num
 
         colors = tuple(np.array([con['color'] for con in contours]) / 255.0)
-    
+
     return label, colors
 
 plot_figs = False
 
 # dealing with data's folder structure
-d = 'C:/Users/19095/Documents/ECE228/NBIA_CT_Data/LCTSC/'
+d = 'C:/Users/harme/Desktop/CT Data/LCTSC/'
 fs = os.listdir(d)
 
 for i,f in enumerate(fs):
@@ -90,7 +90,7 @@ for i,f in enumerate(fs):
 # get sementation files and data folders
 dirs = [] # list of lists: [segmentation directory, data directory]
 for f in fs:
-    ls = os.listdir(f)        
+    ls = os.listdir(f)
     # only consider folders
     r = [] # remove files that will be ignored
     for l in ls:
@@ -106,7 +106,7 @@ for f in fs:
             dirs.append([os.path.join(f,ls[1]),os.path.join(f,ls[0])])
     else:
         raise ValueError("folder structure unexpected")
-        
+
 
 for i,D in enumerate(dirs):
     seg_dir = os.path.join(D[0],os.listdir(D[0])[0])
@@ -115,20 +115,29 @@ for i,D in enumerate(dirs):
 
     # read in CT volume
     dcms = glob.glob(data_dir)
-    data = [pydicom.dcmread(dcm) for dcm in dcms]  
+    data = [pydicom.dcmread(dcm) for dcm in dcms]
     CTvolume = np.stack([d.pixel_array for d in data], axis = -1)
+
+    #Thresh negative values
+    CTvolume[CTvolume < 0] = 0
+
+
+    #Normalize
+    CTvolume = CTvolume/(np.amax(CTvolume)-np.amin(CTvolume))
+
+
     # visualize
     if plot_figs:
         sample_stack(CTvolume, title = 'CT images')
-    
+
     # read in segmentation file
     seg_file = pydicom.dcmread(seg_dir)
     contours = read_structure(seg_file)
-    
+
     # generate masks
     labels, colors = get_mask(contours, data)             # individual organ labels
     join_labels, colors = get_mask_combined(contours, data)     # combined label
-    
+
     # visualize labels
     if plot_figs:
         sample_stack(join_labels, title = 'Combined Segmentation')
@@ -137,10 +146,15 @@ for i,D in enumerate(dirs):
         sample_stack(labels[2], title = contours[2]['organ'])
         sample_stack(labels[3], title = contours[3]['organ'])
         sample_stack(labels[4], title = contours[4]['organ'])
-    
+
     for j in range(len(labels)):
+        #SaveSegmentations
         fname = fs[i] + '/' + contours[j]['organ'] + '.npy'
         np.save(fname,labels[j])
+
+        #Save Data
+        fname = dirs[i][1] + '_data' + '.npy'
+        np.save(fname,CTvolume)
 
     # # visualize center frames of each volume and column wise plot
     # # notice different scanner treat area outside scanner differently
@@ -150,46 +164,10 @@ for i,D in enumerate(dirs):
     # plt.show()
     # plt.imshow(CTvolume[:,:,A])
     # plt.show()
-    
-        
+
+
 
 
 # references
 # https://www.raddq.com/dicom-processing-segmentation-visualization-in-python/
 # SOURCE: http://aapmchallenges.cloudapp.net/forums/3/2/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
