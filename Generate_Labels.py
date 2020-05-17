@@ -77,7 +77,7 @@ def get_mask_combined(contours, data):
     
     return label, colors
 
-plot_figs = True
+plot_figs = False
 
 # dealing with data's folder structure
 d = 'C:/Users/19095/Documents/ECE228/NBIA_CT_Data/LCTSC/'
@@ -132,18 +132,25 @@ for i,D in enumerate(dirs):
     # visualize labels
     if plot_figs:
         sample_stack(join_labels, title = 'Combined Segmentation')
-        # sample_stack(labels[0], title = contours[0]['organ'])
-        # sample_stack(labels[1], title = contours[1]['organ'])
-        # sample_stack(labels[2], title = contours[2]['organ'])
-        # sample_stack(labels[3], title = contours[3]['organ'])
-        # sample_stack(labels[4], title = contours[4]['organ'])
+        sample_stack(labels[0], title = contours[0]['organ'])
+        sample_stack(labels[1], title = contours[1]['organ'])
+        sample_stack(labels[2], title = contours[2]['organ'])
+        sample_stack(labels[3], title = contours[3]['organ'])
+        sample_stack(labels[4], title = contours[4]['organ'])
     
     for j in range(len(labels)):
         fname = fs[i] + '/' + contours[j]['organ'] + '.npy'
         np.save(fname,labels[j])
 
-
-        
+    # # visualize center frames of each volume and column wise plot
+    # # notice different scanner treat area outside scanner differently
+    # A = CTvolume.shape[2] / 2
+    # A = int(np.floor(A))
+    # plt.plot(CTvolume[:,:,A])
+    # plt.show()
+    # plt.imshow(CTvolume[:,:,A])
+    # plt.show()
+    
         
 
 
