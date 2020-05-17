@@ -80,7 +80,7 @@ def get_mask_combined(contours, data):
 plot_figs = True
 
 # dealing with data's folder structure
-d = 'C:/Users/19095/Documents/ECE228/NBIA_CT_Data/LCTSC/'
+d = 'C:/Users/harme/Desktop/CT Data/LCTSC/'
 fs = os.listdir(d)
 
 for i,f in enumerate(fs):
@@ -117,6 +117,15 @@ for i,D in enumerate(dirs):
     dcms = glob.glob(data_dir)
     data = [pydicom.dcmread(dcm) for dcm in dcms]  
     CTvolume = np.stack([d.pixel_array for d in data], axis = -1)
+    
+    #Thresh negative values
+    CTvolume[CTvolume < 0] = 0
+    
+    
+    #Normalize
+    CTvolume = CTvolume/(np.amax(CTvolume)-np.amin(CTvolume))
+    
+    
     # visualize
     if plot_figs:
         sample_stack(CTvolume, title = 'CT images')
@@ -139,50 +148,18 @@ for i,D in enumerate(dirs):
         # sample_stack(labels[4], title = contours[4]['organ'])
     
     for j in range(len(labels)):
+        #SaveSegmentations
         fname = fs[i] + '/' + contours[j]['organ'] + '.npy'
         np.save(fname,labels[j])
+        
+        #Save Data
+        fname = dirs[i][1] + '_data' + '.npy'
+        np.save(fname,CTvolume)
 
 
-        
-        
 
 
 # references
 # https://www.raddq.com/dicom-processing-segmentation-visualization-in-python/
 # SOURCE: http://aapmchallenges.cloudapp.net/forums/3/2/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
