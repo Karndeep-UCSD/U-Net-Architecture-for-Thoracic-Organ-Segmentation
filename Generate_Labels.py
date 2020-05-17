@@ -80,7 +80,8 @@ def get_mask_combined(contours, data):
 plot_figs = False
 
 # dealing with data's folder structure
-d = 'C:/Users/harme/Desktop/CT Data/LCTSC/'
+d = 'C:/Users/19095/Documents/ECE228/NBIA_CT_Data/LCTSC/'  # karndeep computer
+# d = 'C:/Users/harme/Desktop/CT Data/LCTSC/'               # harmeet computer
 fs = os.listdir(d)
 
 for i,f in enumerate(fs):
@@ -113,24 +114,24 @@ for i,D in enumerate(dirs):
     print('loading data....\n', fs[i])
     data_dir = D[1] + '/*'
 
-    # read in CT volume
+    ## read in CT volume ##
     dcms = glob.glob(data_dir)
     data = [pydicom.dcmread(dcm) for dcm in dcms]
     CTvolume = np.stack([d.pixel_array for d in data], axis = -1)
 
-    #Thresh negative values
+    #Threshold negative values and normalize
     CTvolume[CTvolume < 0] = 0
-
-
-    #Normalize
     CTvolume = CTvolume/(np.amax(CTvolume)-np.amin(CTvolume))
 
-
-    # visualize
+    # visualize CT volume
     if plot_figs:
         sample_stack(CTvolume, title = 'CT images')
+    
+    #Save Data
+    fname = dirs[i][1] + '_data' + '.npy'
+    np.save(fname,CTvolume)
 
-    # read in segmentation file
+    ## read in segmentation file ##
     seg_file = pydicom.dcmread(seg_dir)
     contours = read_structure(seg_file)
 
@@ -147,14 +148,10 @@ for i,D in enumerate(dirs):
         sample_stack(labels[3], title = contours[3]['organ'])
         sample_stack(labels[4], title = contours[4]['organ'])
 
+    #Save Segmentations
     for j in range(len(labels)):
-        #SaveSegmentations
         fname = fs[i] + '/' + contours[j]['organ'] + '.npy'
         np.save(fname,labels[j])
-
-        #Save Data
-        fname = dirs[i][1] + '_data' + '.npy'
-        np.save(fname,CTvolume)
 
     # # visualize center frames of each volume and column wise plot
     # # notice different scanner treat area outside scanner differently
