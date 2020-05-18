@@ -128,7 +128,7 @@ for i,D in enumerate(dirs):
         sample_stack(CTvolume, title = 'CT images')
     
     #Save Data
-    fname = dirs[i][1] + '_data' + '.npy'
+    fname = fs[i] + '/' + 'CTvolume.npy'
     np.save(fname,CTvolume)
 
     ## read in segmentation file ##
