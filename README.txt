@@ -96,27 +96,3 @@ x_2d.load_weights loads existing weights with directory as input, only applicabl
 savename_pred and savename_mask save prediction and slice masks according to the directory and file name inputed. 
 data and mask objects should change according to the naming covention of your CT files. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
