@@ -75,7 +75,9 @@ This repository uses function from the following Python libraries.
 
 ### Data Availability
 <p>
+  
   Data can be downloaded from: [DataSet]( https://wiki.cancerimagingarchive.net/display/Public/Lung+CT+Segmentation+Challenge+2017). Data is stored in following file structure:
+  
 </p>
 
 <p align="center">
