@@ -14,7 +14,7 @@
   <h3 align="center">U-Net Architecture for Thoracic Organ Segmentation</h3>
 
   <p align="center">
-    Annotation of Computed Tomography(CT) Scans is a tedious process where a radiologist manually combs through a volume of images marking individual pixel that contain an organ of interest. In this project, we seek to automate the process of segmenting organs in CT scans with deep learning. The U-Net architecture is trained to autonomously segment the heart, lungs, spine, and esophagus from a thoracic CT scans. 
+    Annotation of Computed Tomography(CT) Scans is a tedious process where a radiologist manually combs through a volume of images marking individual pixel that contain an organ of interest. In this project, we seek to automate the process of segmenting organs in CT scans with deep learning. The U-Net architecture is implemented in tensorflow and trained to autonomously segment the heart, lungs, spine, and esophagus from a thoracic CT scans. 
   </p>
 </p>
 
@@ -24,12 +24,7 @@
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#project-overview">Project Overview</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
+    <li><a href="#project-overview">Project Overview</a></li>
     <li><a href="#prerequisites">Prerequisites</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -63,23 +58,34 @@
 </p>
 
 
-### Built With
-
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
-
 ### Prerequisites
+This repository uses function from the following Python libraries.
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+* tensorflow
+* numpy
+* sklearn
+* skimage
+* pydicom
+* matplotlib
+* os
+* glob
+* random
+  
+<!-- USAGE EXAMPLES -->
+## Usage
+* sklearn
+  ```sh
+  npm install npm@latest -g
+  ```
+* sklearn
+  ```sh
+  npm install npm@latest -g
+  ```
+* sklearn
   ```sh
   npm install npm@latest -g
   ```
 
-<!-- USAGE EXAMPLES -->
-## Usage
 
 Results and files etc
 
