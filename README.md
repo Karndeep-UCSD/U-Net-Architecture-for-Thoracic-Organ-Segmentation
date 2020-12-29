@@ -141,7 +141,7 @@ Project Link: [https://github.com/Karndeep-UCSD/ECE228_Project](https://github.c
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation
+[contributors-shield]: https://img.shields.io/github/contributors/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation?style=for-the-badge
 [contributors-url]: https://github.com/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation/graphs/contributors
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/karndeep-raibhatti
