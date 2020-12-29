@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Karndeep-UCSD/U-Net_Architecture_for_Thoracic_Organ_Segmentation">
+  <a href="https://github.com/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation">
     <img src="images/logo.jpg" alt="Logo" width="280" height="254">
   </a>
 
@@ -107,20 +107,20 @@ This repository uses function from the following Python libraries.
   
 <br />
 <p align="center">
-  <a href="https://github.com/Karndeep-UCSD/U-Net_Architecture_for_Thoracic_Organ_Segmentation">
+  <a href="https://github.com/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation">
     <img src="images/Ex-Lung-12-flipped.gif" alt='LUNG EXAMPLE' width="400" height="225">
   </a>
-  <a href="https://github.com/Karndeep-UCSD/U-Net_Architecture_for_Thoracic_Organ_Segmentation">
+  <a href="https://github.com/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation">
     <img src="images/Ex-Heart-12.gif" alt='Heart EXAMPLE' width="400" height="225">
   </a>
 </p>
 
 <br />
 <p align="center">
-  <a href="https://github.com/Karndeep-UCSD/U-Net_Architecture_for_Thoracic_Organ_Segmentation">
+  <a href="https://github.com/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation">
     <img src="images/Ex-Spine-12.gif" alt='Spine EXAMPLE' width="400" height="225">
   </a>
-  <a href="https://github.com/Karndeep-UCSD/U-Net_Architecture_for_Thoracic_Organ_Segmentation">
+  <a href="https://github.com/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation">
     <img src="images/Ex-Espo-12.gif" alt='Espo EXAMPLE' width="400" height="225">
   </a>
 </p>
@@ -136,7 +136,7 @@ Karndeep Singh Rai-Bhatti - [Linkedin]( https://linkedin.com/in/karndeep-raibhat
 
 Harmeet Gill - [Linkedin]( https://www.linkedin.com/in/harmeetsgill/) - harmeetgill93@gmail.com
 
-Project Link: [https://github.com/Karndeep-UCSD/ECE228_Project](https://github.com/Karndeep-UCSD/U-Net_Architecture_for_Thoracic_Organ_Segmentation)
+Project Link: [https://github.com/Karndeep-UCSD/ECE228_Project](https://github.com/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -144,4 +144,4 @@ Project Link: [https://github.com/Karndeep-UCSD/ECE228_Project](https://github.c
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://linkedin.com/in/karndeep-raibhatti
