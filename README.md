@@ -108,23 +108,22 @@ This repository uses function from the following Python libraries.
 <br />
 <p align="center">
   <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
-    <img src="images/Ex-Lung-12.gif" alt='LUNG EXAMPLE' width="640" height="360">
+    <img src="images/Ex-Lung-12-flipped.gif" alt='LUNG EXAMPLE' width="320" height="180">
   </a>
+  <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
+    <img src="images/Ex-Heart-12.gif" alt='Heart EXAMPLE' width="320" height="180">
+  </a>
+</p>
+
 <br />
 <p align="center">
   <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
-    <img src="images/Ex-Heart-12.gif" alt='Heart EXAMPLE' width="640" height="360">
+    <img src="images/Ex-Spine-12.gif" alt='Spine EXAMPLE' width="320" height="180">
   </a>
-<br />
-<p align="center">
   <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
-    <img src="images/Ex-Spine-12.gif" alt='Spine EXAMPLE' width="640" height="360">
+    <img src="images/Ex-Espo-12.gif" alt='Espo EXAMPLE' width="320" height="180">
   </a>
-<br />
-<p align="center">
-  <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
-    <img src="images/Ex-Espo-12.gif" alt='Espo EXAMPLE' width="640" height="360">
-  </a>
+</p>
 
 <!-- CONTACT -->
 ## Contact
