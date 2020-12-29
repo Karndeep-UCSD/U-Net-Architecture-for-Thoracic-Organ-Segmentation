@@ -26,8 +26,9 @@
   <ol>
     <li><a href="#project-overview">Project Overview</a></li>
     <li><a href="#prerequisites">Prerequisites</a></li>
-    <li><a href="#data_availability">Data Availability</a></li>
+    <li><a href="#data-availability">Data Availability</a></li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#results">Results</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -73,11 +74,16 @@ This repository uses function from the following Python libraries.
 * random
 
 ### Data Availability
+<p>
+  Data can be downloaded from: [DataSet]( https://wiki.cancerimagingarchive.net/display/Public/Lung+CT+Segmentation+Challenge+2017). Data is stored in following file structure:
+</p>
 
-  tgdfggddgdg
+<p align="center">
+   NBIA_CT_Data > [Patient Data Folders] > A Single Folder > [Dicom folder, segmentation folder] > Dicom files
+</p>
+  
+  
 ## Usage
-
-
 
 1. Generate Labels
   ```sh
@@ -91,19 +97,17 @@ This repository uses function from the following Python libraries.
   ```
   This function takes the 3D npy files made by Generate_Labels.py and generates 512x512 2D slices. They are saved as individual .npy files. It first does this for the CT volumes, then for the individual organ segmentations. Organ slices are saved to an organ specific folder.
   
-  
-3. sklearn
+3. Training and Testing Model
   ```sh
   2D_UNet.ipynb
   ```
+  This is the main notebook that loads CT slices, preprocesses data, fits, and tests the model. Data is loaded using a generator with a variable <i> batch_size, </i> which determines how many CT stacks can be injested with each call to the generator function. <i> Dice </i> and <i> Intersection Over Union(IOU) </i> are used as metrics while fitting the model. 
 
-
-Results and files etc
-
-scripts
-what they do;
-some logical flow
-
+## Results
+  
+  <video width="320" height="240" controls>
+    <source src="https://github.com/Karndeep-UCSD/ECE228_Project/tree/master/documentation/ECE228_Lung_12.mp4" type="video/mp4">
+  </video>
 
 
 <!-- CONTACT -->
