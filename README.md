@@ -26,6 +26,7 @@
   <ol>
     <li><a href="#project-overview">Project Overview</a></li>
     <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#data_availability">Data Availability</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -70,20 +71,30 @@ This repository uses function from the following Python libraries.
 * os
 * glob
 * random
-  
-<!-- USAGE EXAMPLES -->
+
+### Data Availability
+
+  tgdfggddgdg
 ## Usage
-* sklearn
+
+
+
+1. Generate Labels
   ```sh
-  npm install npm@latest -g
+  Generate_Labels.py
   ```
-* sklearn
+  This function serves to preprocess our the data provided by the AAMP competition. Dicom segmentation files are taken and converted to 3D binary masks, one per organ, and saved as npy files. CT dicoms are preprocessed and saved volumetrically as .npy files.
+  
+2. Convert 3D volumes to set of 2D images for training
   ```sh
-  npm install npm@latest -g
+  3d_2d_conversion.ipynb
   ```
-* sklearn
+  This function takes the 3D npy files made by Generate_Labels.py and generates 512x512 2D slices. They are saved as individual .npy files. It first does this for the CT volumes, then for the individual organ segmentations. Organ slices are saved to an organ specific folder.
+  
+  
+3. sklearn
   ```sh
-  npm install npm@latest -g
+  2D_UNet.ipynb
   ```
 
 
