@@ -97,11 +97,17 @@ This repository uses function from the following Python libraries.
   ```
   This function takes the 3D npy files made by Generate_Labels.py and generates 512x512 2D slices. They are saved as individual .npy files. It first does this for the CT volumes, then for the individual organ segmentations. Organ slices are saved to an organ specific folder.
   
-3. Training and Testing Model
+3. Training and Testing 2D Model
   ```sh
   2D_UNet.ipynb
   ```
   This is the main notebook that loads CT slices, preprocesses data, fits, and tests the model. Data is loaded using a generator with a variable <i> batch_size, </i> which determines how many CT stacks can be injested with each call to the generator function. <i> Dice </i> and <i> Intersection Over Union(IOU) </i> are used as metrics while fitting the model. 
+
+4. Training and Testing 3D Model
+  ```sh
+  3D_UNet.ipynb
+  ```
+  This is similar to the above notebook, with the exception that this uses volumetric convolutions and performs labeling using 3D data rather than 2D. We were interested in comparing its performance, but did not have hardware powerful enough to train the model.  
 
 ## Results
   
