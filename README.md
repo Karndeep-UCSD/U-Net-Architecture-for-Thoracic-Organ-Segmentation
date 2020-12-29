@@ -108,21 +108,25 @@ This repository uses function from the following Python libraries.
 <br />
 <p align="center">
   <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
-    <img src="images/Ex-Lung-12-flipped.gif" alt='LUNG EXAMPLE' width="320" height="180">
+    <img src="images/Ex-Lung-12-flipped.gif" alt='LUNG EXAMPLE' width="400" height="225">
   </a>
   <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
-    <img src="images/Ex-Heart-12.gif" alt='Heart EXAMPLE' width="320" height="180">
+    <img src="images/Ex-Heart-12.gif" alt='Heart EXAMPLE' width="400" height="225">
   </a>
 </p>
 
 <br />
 <p align="center">
   <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
-    <img src="images/Ex-Spine-12.gif" alt='Spine EXAMPLE' width="320" height="180">
+    <img src="images/Ex-Spine-12.gif" alt='Spine EXAMPLE' width="400" height="225">
   </a>
   <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
-    <img src="images/Ex-Espo-12.gif" alt='Espo EXAMPLE' width="320" height="180">
+    <img src="images/Ex-Espo-12.gif" alt='Espo EXAMPLE' width="400" height="225">
   </a>
+</p>
+
+<p align="center">
+Above are typical results that were observed using our approach. Heart segmenter appeared to outperform the manual segmentation, resulting in smoother and more complete segmentation. The spine and lungs performed similarly well, but commonly included erronious regions. Esophagus localized well but overall performed poorly. This was likely due to class imbalance and having low contrast compared to surrounding tissue. For three of the four organs, our approach performed similar to the most successful groups in the beforementioned competition. 
 </p>
 
 <!-- CONTACT -->
@@ -130,10 +134,9 @@ This repository uses function from the following Python libraries.
 
 Karndeep Singh Rai-Bhatti - [Linkedin]( https://linkedin.com/in/karndeep-raibhatti) - karndeep.raibhatti@gmail.com
 
+Harmeet Gill - [Linkedin]( https://www.linkedin.com/in/harmeetsgill/) - harmeetgill93@gmail.com
+
 Project Link: [https://github.com/Karndeep-UCSD/ECE228_Project](https://github.com/Karndeep-UCSD/ECE228_Project)
-
-other names here
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
