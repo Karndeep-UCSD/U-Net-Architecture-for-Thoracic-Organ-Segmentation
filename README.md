@@ -43,7 +43,7 @@
 
 <br />
 <p align="center">
-  <img src="images/Unet_diagram.png" alt="Logo" width="660" height="440">
+  <img src="images/Unet_diagram.png" alt="UNET" width="660" height="440">
 </p>
 
 <p>  
@@ -56,7 +56,7 @@
 
 <br />
 <p align="center">
-  <img src="images/result_table.png" alt="Logo" width="374" height="174">
+  <img src="images/result_table.png" alt="RESULT TABLE" width="374" height="174">
 </p>
 
 
@@ -105,10 +105,26 @@ This repository uses function from the following Python libraries.
 
 ## Results
   
-  <video width="320" height="240" controls>
-    <source src="https://github.com/Karndeep-UCSD/ECE228_Project/tree/master/documentation/ECE228_Lung_12.mp4" type="video/mp4">
-  </video>
-
+<br />
+<p align="center">
+  <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
+    <img src="images/Ex-Lung-12.gif" alt='LUNG EXAMPLE' width="640" height="360">
+  </a>
+<br />
+<p align="center">
+  <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
+    <img src="images/Ex-Heart-12.gif" alt='Heart EXAMPLE' width="640" height="360">
+  </a>
+<br />
+<p align="center">
+  <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
+    <img src="images/Ex-Spine-12.gif" alt='Spine EXAMPLE' width="640" height="360">
+  </a>
+<br />
+<p align="center">
+  <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
+    <img src="images/Ex-Espo-12.gif" alt='Espo EXAMPLE' width="640" height="360">
+  </a>
 
 <!-- CONTACT -->
 ## Contact
