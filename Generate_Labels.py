@@ -111,7 +111,7 @@ for f in fs:
 
 
 for i,D in enumerate(dirs):
-        
+
     seg_dir = os.path.join(D[0],os.listdir(D[0])[0])
     print('loading data....\n', fs[i])
     data_dir = D[1] + '/*'
@@ -128,7 +128,7 @@ for i,D in enumerate(dirs):
     # visualize CT volume
     if plot_figs:
         sample_stack(CTvolume, title = 'CT images')
-    
+
     #Save Data
     fname = d_out_data + str(i).zfill(3) + '_CTvolume.npy'
     np.save(fname,CTvolume)
@@ -169,4 +169,4 @@ for i,D in enumerate(dirs):
 
 # references
 # https://www.raddq.com/dicom-processing-segmentation-visualization-in-python/
-# SOURCE: http://aapmchallenges.cloudapp.net/forums/3/2/
+# data source: http://aapmchallenges.cloudapp.net/forums/3/2/
