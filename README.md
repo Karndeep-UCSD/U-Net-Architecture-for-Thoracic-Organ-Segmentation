@@ -144,7 +144,7 @@ Karndeep Singh Rai-Bhatti - [Linkedin]( https://linkedin.com/in/karndeep-raibhat
 
 Harmeet Gill - [Linkedin]( https://www.linkedin.com/in/harmeetsgill/) - harmeetgill93@gmail.com
 
-Project Link: [https://github.com/Karndeep-UCSD/ECE228_Project](https://github.com/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation)
+Project Link: [https://github.com/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation](https://github.com/Karndeep-UCSD/U-Net-Architecture-for-Thoracic-Organ-Segmentation)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
