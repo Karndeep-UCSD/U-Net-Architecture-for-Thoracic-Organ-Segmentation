@@ -15,6 +15,7 @@
 
   <p align="center">
     In this project, we implementated of deep learning to segment organs in CT scans of the human thorax. The dataset, and methods are provided by a competition hosted during the Annual Meeting of American Association of Physicists in Medicine in 2017.
+  USEcase/why its importnt
   </p>
 </p>
 
@@ -43,6 +44,7 @@
 ## Project Overview
 
 describe project
+abstract/what we did/ results
 
 ### Built With
 
@@ -64,6 +66,9 @@ This is an example of how to list things you need to use the software and how to
 
 Results and files etc
 
+scripts
+what they do;
+some logical flow
 
 
 
