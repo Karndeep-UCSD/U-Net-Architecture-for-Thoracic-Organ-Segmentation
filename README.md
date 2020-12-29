@@ -7,23 +7,15 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/Karndeep-UCSD/ECE228_Project">
+    <img src="images/Unet_diagram.png" alt="Logo" width="660" height="440">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">U-Net Architecture for Thoracic Organ Segmentation</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    In this project, we implementated of deep learning to segment organs in CT scans of the human thorax. The dataset, and methods are provided by a competition hosted during the Annual Meeting of American Association of Physicists in Medicine in 2017.
+  USEcase/why its importnt
   </p>
 </p>
 
@@ -52,6 +44,7 @@
 ## Project Overview
 
 describe project
+abstract/what we did/ results
 
 ### Built With
 
@@ -73,6 +66,9 @@ This is an example of how to list things you need to use the software and how to
 
 Results and files etc
 
+scripts
+what they do;
+some logical flow
 
 
 
